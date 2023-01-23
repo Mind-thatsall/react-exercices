@@ -1,0 +1,46 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.App {
+  display: flex;
+  align-items: flex;
+  justify-content: flex;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+}
+
+.card {
+   height: 100px;
+   width: 100px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: white;
+   color: black;
+   margin: 5px;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.fullPage {
+  width: 100vw;
+  height: 100vh;
+}
