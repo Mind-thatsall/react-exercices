@@ -33,7 +33,7 @@ function App() {
 					revealedCard[rowIndex][colIndex] = false;
 					revealedCard[previousClick.row][previousClick.col] = false;
 					setRevealCard([...revealCard]);
-				}, 1000);
+				}, 250);
 			}
 
 			setPreviousClick(undefined);
@@ -53,62 +53,8 @@ function App() {
 		}
 	}
 
-	type Point = {
-		x: number;
-		y: number;
-	};
-
-	const [circles, setCircles] = useState<Point[]>([]);
-	const [oldCircles, setOldCircles] = useState<Point[]>([]);
-
-	function handleClickWindow(e) {
-		setCircles([
-			...circles,
-			{
-				x: e.clientX,
-				y: e.clientY,
-			},
-		]);
-	}
-
-	function handleUndo() {
-    if(circles.length === 0) return;
-
-		const allCircles = [...circles];
-    const popped = allCircles.pop()
-    setOldCircles([...oldCircles, popped]);
-		setCircles(allCircles);
-	}
-
-	function handleRedo() {
-    if(oldCircles.length === 0) return;
-		const allOldCircles = [...oldCircles];
-    const popped = oldCircles.pop();
-
-    const allCircles = [...circles];
-    allCircles.push(popped)
-    allOldCircles.pop();
-    
-		setCircles(allCircles);
-    setOldCircles(allOldCircles)
-	}
-
 	return (
 		<>
-			<button className="undo" onClick={handleRedo}>
-				Redo
-			</button>
-			<button className="undo" onClick={handleUndo}>
-				Undo
-			</button>
-			<div className="fullPage" onClick={handleClickWindow}>
-				{circles.map((circle, circleIndex) => (
-					<div
-						key={circleIndex}
-						className="circle"
-						style={{ left: circle.x, top: circle.y }}></div>
-				))}
-
 				<div className="App">
 					<div className="grid">
 						{grid.map((row, rowIndex) => (
@@ -125,7 +71,6 @@ function App() {
 						))}
 					</div>
 				</div>
-			</div>
 		</>
 	);
 }
