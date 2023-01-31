@@ -1,0 +1,84 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.decorativeStar {
+  background-color: #272d35;
+  width: fit-content;
+  padding: 15px 20px;
+  border-radius: 50%;
+  color: #ec7e36;
+  margin-bottom: 30px;
+}
+
+.box {
+  width: 350px;
+  height: auto;
+  background: linear-gradient(#222830, #181e26);
+  border-radius: 2vh;
+  padding: 3vh;
+}
+
+.box.thanks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  color: #6b737d;
+}
+
+.rating {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.rate {
+  padding: 15px 20px;
+  border-radius: 50%;
+  background-color: #272d35;
+  color: #6b737d;
+  border: none;
+}
+
+.rate:hover {
+  cursor: pointer;
+  background-color: #ec7e36;
+  color: white;
+}
+
+.rate:focus {
+  background-color: #ec7e36;
+  color: white;
+}
+
+.submit {
+  border: none;
+  background-color: #ec7e36;
+  margin-top: 40px;
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  letter-spacing: 3px;
+  border-radius: 10vh;
+}
+
+.submit:hover {
+  cursor: pointer;
+  background-color: #c66a2d;
+}
+
+.choosen-rating {
+  background-color: #242b32;
+  padding: 5px 20px;
+  color: #e78848;
+  border-radius: 10vh;
+}
