@@ -1,0 +1,39 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.tile {
+  width: 70px;
+  height: 70px;
+  background-color: #000;
+  margin-bottom: 10px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.436);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.valid {
+  background-color: green !important;
+}
+
+.maybe {
+  background-color: rgb(246, 185, 45) !important;
+}
