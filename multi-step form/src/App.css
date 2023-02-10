@@ -96,7 +96,7 @@ ol li::before {
 	height: min-content;
 }
 
-.personal_infos_inputs {
+.step_content {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 80px;
@@ -151,17 +151,178 @@ button:active {
 }
 
 #goBack:hover {
-	background-color: hsl(231, 11%, 63%);
-	color: white;
+	color: hsl(213, 96%, 18%);
 }
 
 #goBack:active {
-	background-color: hsl(231, 11%, 53%);
-	color: white;
+	color: hsl(213, 96%, 35%);
 }
 
 .footer {
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
+}
+
+.cards {
+	display: flex;
+	width: 100%;
+	gap: 20px;
+}
+
+.card {
+	border: 1px solid #d9d9db;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	height: 150px;
+	width: 120px;
+	padding: 20px;
+	border-radius: 10px;
+	transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.card:hover {
+	border-color: hsl(243, 100%, 62%);
+	background-color: #f8f9fe;
+	cursor: pointer;
+}
+
+.card.active {
+	border-color: hsl(243, 100%, 62%);
+	background-color: #f8f9fe;
+	cursor: pointer;
+}
+
+.card .plan_name {
+	color: hsl(213, 96%, 18%);
+	font-family: "Ubuntu-Medium";
+	margin-bottom: 4px;
+}
+
+.card .price {
+	font-size: 15px;
+}
+
+.card .yearly_month_free {
+	color: hsl(213, 96%, 18%);
+	font-size: 12px;
+	margin-top: 6px;
+}
+
+.choose_billing {
+	margin-top: 30px;
+	width: 100%;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	background-color: #f8f9fe;
+	padding: 10px 0;
+	gap: 20px;
+}
+
+.billing {
+	color: #9d9da7;
+	font-family: "Ubuntu-Medium";
+}
+
+/* Toggle Button */
+
+#toggle {
+	-webkit-appearance: none;
+	-webkit-tap-highlight-color: transparent;
+	position: relative;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+	height: 22px;
+}
+
+/* To create surface of toggle button */
+#toggle:after {
+	content: "";
+	width: 40px;
+	height: 100%;
+	display: inline-block;
+	background: hsl(213, 96%, 18%);
+	border-radius: 18px;
+	clear: both;
+}
+
+/* Contents before checkbox to create toggle handle */
+#toggle:before {
+	content: "";
+	width: 14px;
+	height: 14px;
+	display: block;
+	position: absolute;
+	left: 4px;
+	top: 11px;
+	transform: translateY(-50%);
+	border-radius: 50%;
+	background: rgb(255, 255, 255);
+	transition: left 0.15s ease;
+}
+
+/* Shift the handle to left on check event */
+#toggle:checked:before {
+	left: 22px;
+}
+
+.addon {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	align-items: center;
+	border: 1px solid #9d9da7;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.addon_left {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+}
+
+.step_content.addons {
+	gap: 16px;
+	margin-bottom: 80px;
+}
+
+.addon-content-title {
+	color: hsl(213, 96%, 18%) !important;
+	font-size: 16px !important;
+	font-family: "Ubuntu-Medium";
+	margin-bottom: 5px;
+}
+
+.addon-content-description {
+	font-family: "Ubuntu-Regular";
+	font-size: 16px !important;
+}
+
+.addon-price {
+	color: hsl(243, 100%, 62%) !important;
+	font-size: 16px !important;
+}
+
+#addonCheck {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	border: 1px solid #9d9da7;
+	border-radius: 4px;
+	outline: none;
+	transition-duration: 0.3s;
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+}
+
+#addonCheck:checked {
+	background-color: hsl(243, 100%, 62%) !important;
+	border-radius: 4px;
 }
