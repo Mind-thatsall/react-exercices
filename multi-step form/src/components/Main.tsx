@@ -11,6 +11,19 @@ type step2States = {
 	setSelected: (selected: string) => void;
 };
 
+type step3States = {
+	selectedAddons: { online: boolean; storage: boolean; profile: boolean };
+	setSelectedAddons: ({
+		online,
+		storage,
+		profile,
+	}: {
+		online: boolean;
+		storage: boolean;
+		profile: boolean;
+	}) => void;
+};
+
 function Step1() {
 	return (
 		<div className="step_content">
@@ -96,39 +109,76 @@ function Step2({ checked, setChecked, selected, setSelected }: step2States) {
 	);
 }
 
-function Step3() {
+function Step3({ selectedAddons, setSelectedAddons }: step3States) {
 	return (
 		<div className="step_content addons">
-			<div className="addon">
+			<label className={`addon ${selectedAddons.online ? "active" : ""}`}>
 				<span className="addon_left">
-					<input type="checkbox" name="addonCheck" id="addonCheck" />
+					<input
+						type="checkbox"
+						name="addonCheck"
+						id="addonCheck"
+						onChange={() =>
+							setSelectedAddons({
+								online: !selectedAddons.online,
+								storage: selectedAddons.storage,
+								profile: selectedAddons.profile,
+							})
+						}
+					/>
 					<span className="addon-content">
 						<p className="addon-content-title">Online service</p>
-						<p className="addon-content-description">Access to multiplayer games</p>
+						<p className="addon-content-description">
+							Access to multiplayer games
+						</p>
 					</span>
 				</span>
 				<p className="addon-price">+$1/mo</p>
-			</div>
-			<div className="addon">
+			</label>
+			<label className={`addon ${selectedAddons.storage ? "active" : ""}`}>
 				<span className="addon_left">
-					<input type="checkbox" name="addons" id="addons" />
+					<input
+						type="checkbox"
+						name="addons"
+						id="addonCheck"
+						onChange={() =>
+							setSelectedAddons({
+								online: selectedAddons.online,
+								storage: !selectedAddons.storage,
+								profile: selectedAddons.profile,
+							})
+						}
+					/>
 					<span className="addon-content">
 						<p className="addon-content-title">Larger storage</p>
 						<p className="addon-content-description">Extra 1TB of cloud save</p>
 					</span>
 				</span>
 				<p className="addon-price">+$2/mo</p>
-			</div>
-			<div className="addon">
+			</label>
+			<label className={`addon ${selectedAddons.profile ? "active" : ""}`}>
 				<span className="addon_left">
-					<input type="checkbox" name="addons" id="addons" />
+					<input
+						type="checkbox"
+						name="addons"
+						id="addonCheck"
+						onChange={() =>
+							setSelectedAddons({
+								online: selectedAddons.online,
+								storage: selectedAddons.storage,
+								profile: !selectedAddons.profile,
+							})
+						}
+					/>
 					<span className="addon-content">
 						<p className="addon-content-title">Customizable Profile</p>
-						<p className="addon-content-description">Custom theme on your profile</p>
+						<p className="addon-content-description">
+							Custom theme on your profile
+						</p>
 					</span>
 				</span>
 				<p className="addon-price">+$2/mo</p>
-			</div>
+			</label>
 		</div>
 	);
 }
@@ -163,9 +213,14 @@ function Step4() {
 
 const Main = () => {
 	const { step } = useContext(stepContext);
-	let [page, setPage] = useState(Step1);
-	let [checked, setChecked] = useState(false);
-	let [selected, setSelected] = useState("arcade");
+	const [page, setPage] = useState(Step1);
+	const [checked, setChecked] = useState(false);
+	const [selected, setSelected] = useState("arcade");
+	const [selectedAddons, setSelectedAddons] = useState({
+		online: false,
+		storage: false,
+		profile: false,
+	});
 
 	useEffect(() => {
 		switch (step) {
@@ -176,13 +231,13 @@ const Main = () => {
 				setPage(() => Step2({ checked, setChecked, selected, setSelected }));
 				break;
 			case 3:
-				setPage(Step3);
+				setPage(() => Step3({ selectedAddons, setSelectedAddons }));
 				break;
 			case 4:
 				setPage(Step4);
 				break;
 		}
-	}, [step, checked, selected]);
+	}, [step, checked, selected, selectedAddons]);
 
 	return <div id="app">{page}</div>;
 };
