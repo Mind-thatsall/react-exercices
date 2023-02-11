@@ -370,3 +370,73 @@ button:active {
 		margin: 0;
 	}
 }
+
+.summary {
+	background-color: #f8f9fe;
+	padding: 25px;
+	border-radius: 10px;
+}
+
+.plan {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.plan_name {
+	color: hsl(213, 96%, 18%) !important;
+	font-family: "Ubuntu-Medium";
+	margin-bottom: 4px;
+	font-size: 16px !important;
+}
+
+.change_plan {
+	color: hsl(243, 100%, 62%);
+	font-size: 14px;
+}
+
+.plan_price {
+	color: hsl(213, 96%, 18%) !important;
+	font-family: "Ubuntu-Bold";
+}
+
+hr {
+	border: 0.5px solid #e7e8ed;
+	margin: 25px 0;
+}
+
+.summary_addons {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.summary_addon {
+	display: flex;
+	justify-content: space-between;
+}
+
+.addon_name {
+	font-size: 14px !important;
+}
+
+.addon_price {
+	font-size: 14px !important;
+	color: hsl(213, 96%, 18%) !important;
+}
+
+.total {
+	display: flex;
+	justify-content: space-between;
+	padding: 30px;
+}
+
+.total_plan {
+	font-size: 14px !important;
+}
+
+.total_price {
+	color: hsl(243, 100%, 62%) !important;
+	font-family: "Ubuntu-Bold";
+	font-size: 20px !important;
+}
