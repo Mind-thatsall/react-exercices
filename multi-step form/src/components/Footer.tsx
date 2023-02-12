@@ -34,8 +34,8 @@ const Footer = () => {
 	return (
 		<div className="footer">
 			<button id="goBack">Go Back</button>
-			<button id="nextStep">Next Step</button>
-		</div>
+			<button id="nextStep" style={{backgroundColor: step === 4 ? 'hsl(243, 100%, 62%)' : 'hsl(213, 96%, 18%)' }}>{step === 4 ? 'Confirm' : 'Next Step'}</button>
+		</div> 
 	);
 };
 

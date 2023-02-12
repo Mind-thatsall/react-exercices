@@ -115,13 +115,17 @@ input[type="text"] {
 	font-family: "Ubuntu-Medium";
 	border-radius: 8px;
 	border: 1px solid #dadadc;
-	color: hsl(231, 11%, 40%);
+	color: hsl(213, 96%, 18%);
 	margin-bottom: 20px;
 }
 
 input[type="text"]:focus-visible {
 	border-color: hsl(243, 100%, 62%);
 	outline: none;
+}
+
+input[type="text"]:hover {
+	cursor: pointer;
 }
 
 button {
@@ -133,16 +137,17 @@ button {
 	background-color: hsl(213, 96%, 18%);
 	border: none;
 	border-radius: 8px;
-	transition: background-color 0.15s ease, color 0.15s ease;
+	transition: filter 0.15s ease, color 0.15s ease;
 }
 
 button:hover {
 	background-color: hsl(213, 96%, 25%);
 	cursor: pointer;
+	filter: brightness(1.6);
 }
 
 button:active {
-	background-color: hsl(213, 96%, 18%);
+	filter: brightness(1.2);
 	cursor: pointer;
 }
 
@@ -186,7 +191,6 @@ button:active {
 
 .card:hover {
 	border-color: hsl(243, 100%, 62%);
-	background-color: #f8f9fe;
 	cursor: pointer;
 }
 
@@ -289,7 +293,6 @@ button:active {
 
 .addon:hover {
 	border-color: hsl(243, 100%, 62%);
-	background-color: #f8f9fe;
 	cursor: pointer;
 }
 
@@ -321,7 +324,7 @@ button:active {
 	font-size: 16px !important;
 }
 
-input[type="checkbox"] {
+#addonCheck {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	-o-appearance: none;
@@ -333,11 +336,22 @@ input[type="checkbox"] {
 	cursor: pointer;
 	height: 20px;
 	width: 20px;
+	position: relative;
 }
 
-input[type="checkbox"]:checked {
+#addonCheck:checked {
 	background-color: hsl(243, 100%, 62%) !important;
 	border-radius: 4px;
+}
+
+#addonCheck:after {
+	content: "✔";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 14px;
+	transform: translate(-50%, -50%);
+	color: #fff;
 }
 
 @media screen and (max-width: 768px) {
@@ -391,8 +405,14 @@ input[type="checkbox"]:checked {
 }
 
 .change_plan {
-	color: hsl(243, 100%, 62%);
-	font-size: 14px;
+	color: hsl(243, 100%, 62%) !important;
+	font-size: 14px !important;
+}
+
+.change_plan:hover {
+	cursor: pointer;
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
 }
 
 .plan_price {
