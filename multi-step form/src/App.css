@@ -321,7 +321,7 @@ button:active {
 	font-size: 16px !important;
 }
 
-#addonCheck {
+input[type="checkbox"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	-o-appearance: none;
@@ -335,7 +335,7 @@ button:active {
 	width: 20px;
 }
 
-#addonCheck:checked {
+input[type="checkbox"]:checked {
 	background-color: hsl(243, 100%, 62%) !important;
 	border-radius: 4px;
 }
