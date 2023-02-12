@@ -29,6 +29,7 @@ type Addon = {
 	choosen: boolean;
 	name: string;
 	price: number;
+	priceString: string;
 };
 
 type step3States = {
@@ -39,16 +40,19 @@ type step3States = {
 			choosen: boolean;
 			name: string;
 			price: number;
+			priceString: string;
 		};
 		storage: {
 			choosen: boolean;
 			name: string;
 			price: number;
+			priceString: string;
 		};
 		profile: {
 			choosen: boolean;
 			name: string;
 			price: number;
+			priceString: string;
 		};
 	};
 };
@@ -132,6 +136,7 @@ function Step2({
 					type="checkbox"
 					name="toggle"
 					id="toggle"
+					checked={checked}
 					onChange={() => {
 						setChecked(!checked);
 					}}
@@ -186,7 +191,7 @@ function Step3({ selectedAddons, setSelectedAddons, addons }: step3States) {
 						</p>
 					</span>
 				</span>
-				<p className="addon-price">+$1/mo</p>
+				<p className="addon-price">{addons.online.priceString}</p>
 			</label>
 			<label className={`addon ${allAddons[indexStorage]?.choosen ? "active" : ""}`}>
 				<span className="addon_left">
@@ -204,7 +209,7 @@ function Step3({ selectedAddons, setSelectedAddons, addons }: step3States) {
 						<p className="addon-content-description">Extra 1TB of cloud save</p>
 					</span>
 				</span>
-				<p className="addon-price">+$2/mo</p>
+				<p className="addon-price">{addons.storage.priceString}</p>
 			</label>
 			<label className={`addon ${allAddons[indexProfile]?.choosen ? "active" : ""}`}>
 				<span className="addon_left">
@@ -224,7 +229,7 @@ function Step3({ selectedAddons, setSelectedAddons, addons }: step3States) {
 						</p>
 					</span>
 				</span>
-				<p className="addon-price">+$2/mo</p>
+				<p className="addon-price">{addons.profile.priceString}</p>
 			</label>
 		</div>
 	);
@@ -286,16 +291,19 @@ const Main = () => {
 			choosen: false,
 			name: "Online service",
 			price: checked ? 10 : 1,
+			priceString: checked ? '+10$/yr' : '+1$/mo'
 		},
 		storage: {
 			choosen: false,
 			name: "Larger storage",
 			price: checked ? 20 : 2,
+			priceString: checked ? '+20$/yr' : '+2$/mo'
 		},
 		profile: {
 			choosen: false,
 			name: "Customizable Profile",
 			price: checked ? 20 : 2,
+			priceString: checked ? '+20$/yr' : '+2$/mo'
 		},
 	};
 
@@ -326,9 +334,22 @@ const Main = () => {
 			(plan) => plan[0] === selectedPlan.name
 		)![1];
 		setSelectedPlan(plan);
+
 		if(selectedAddons.length > 0) {
-			[...selectedAddons].forEach(addon => console.log(addon));
+			selectedAddons.forEach(addon => {
+				if(addon.name === addons.online.name) {
+					addon.price = addons.online.price;
+					addon.priceString = addons.online.priceString;
+				} else if(addon.name === addons.storage.name) {
+					addon.price = addons.storage.price;
+					addon.priceString = addons.storage.priceString;
+				} else if(addon.name === addons.profile.name) {
+					addon.price = addons.profile.price;
+					addon.priceString = addons.profile.priceString;
+				}
+			})
 		}
+			
 	}, [checked]);
 
 	return <div id="app">{page}</div>;
